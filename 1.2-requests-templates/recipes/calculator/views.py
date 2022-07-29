@@ -8,8 +8,8 @@ DATA = {
         'соль, ч.л.': 0.5,
     },
     'pasta': {
-        'макароны, г': 0.3,
-        'сыр, г': 0.05,
+        'макароны, кг': 0.3,
+        'сыр, кг': 0.05,
     },
     'buter': {
         'хлеб, ломтик': 1,
@@ -21,6 +21,9 @@ DATA = {
 
 
 def recipe(request, dish):
-    context = {dish: DATA.get(dish)}
-    print(context)
+    servings = int(request.GET.get('servings', 1))
+    rec = DATA.get(dish)
+    for i in rec:
+        rec[i] *= servings
+    context = {'recipe': rec}
     return render(request, 'calculator/index.html', context)
