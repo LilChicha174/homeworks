@@ -50,12 +50,10 @@ MIDDLEWARE = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'netology_import_phones',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'Hjvfajy74!',
     }
 }
 
@@ -119,4 +117,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+try:
+    from .settings_local import *
+except ImportError:
+    pass

@@ -15,8 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0cir6)b-3&nij^mfa%7&)7e(i(eaiy8at3cgzen3*!3+1)p)0c'
+SECRET_KEY = '^vmt%w#-2ga8t_db%*7wxzx-rykkwhwxs^(bn9n7pw^gt^c33w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -51,11 +50,9 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_import_phones',
+        'NAME': 'netology_phone_comparison',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'USER': 'postgres',
-        'PASSWORD': 'Hjvfajy74!',
     }
 }
 
@@ -119,4 +116,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+try:
+    from .settings_local import *
+except ImportError:
+    pass
