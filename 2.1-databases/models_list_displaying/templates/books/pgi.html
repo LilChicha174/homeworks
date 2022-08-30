@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for book in page %}
+    <h2>{{ book.name }}</h2>
+    <p>Автор: {{ book.author }}</p>
+    <p>Дата публикации: {{ book.pub_date }}</p>
+{% endfor %}
+
+{% if page.has_previous %}
+    <a href="{% url 'books' previous_page_val %}">{{ previous_page_val }}</a>
+{% endif %}
+{% if page.has_next %}
+    <a href="{% url 'books' next_page_val %}">{{ next_page_val }}</a>
+{% endif %}
+</body>
+</html>
